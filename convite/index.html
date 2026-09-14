@@ -3,47 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f4f1e7">
-<title>Gisele & Anderson — Convite</title>
+<meta name="theme-color" content="#f3f0e8">
+<title>Anderson &amp; Gisele — Convite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
-:root{--cream:#f4f1e7;--ink:#334333;--green:#5e7f4c;--soft:#71806d;--line:#91a18a}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--cream)}body{overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif}.page{position:relative;width:min(100vw,560px);height:100dvh;min-height:680px;margin:auto;overflow:hidden;background:var(--cream)}
-/* Fotografia real + dissolução inspirada no modelo */
-.photo{position:absolute;inset:0 0 auto;width:100%;height:56%;object-fit:cover;object-position:center 27%;filter:saturate(.86) contrast(.95) brightness(1.04);transform:scale(1.012);z-index:0}
-.photoMix{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(244,241,231,0) 0%,rgba(244,241,231,0) 27%,rgba(244,241,231,.03) 32%,rgba(244,241,231,.18) 38%,rgba(244,241,231,.52) 45%,rgba(244,241,231,.84) 51%,rgba(244,241,231,.97) 57%,var(--cream) 63%)}
-.photoGlow{position:absolute;z-index:2;left:0;right:0;top:27%;height:28%;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.62),rgba(255,255,255,0) 72%);pointer-events:none}
-.frame{position:absolute;inset:13px;z-index:10;border:1px solid rgba(83,96,78,.32);pointer-events:none}.frame:after{content:'';position:absolute;inset:7px;border:1px solid rgba(255,255,255,.58)}
-.content{position:absolute;inset:0;z-index:7;text-align:center}
-.kicker{position:absolute;top:30.5%;width:100%;margin:0;font-family:Montserrat,Arial,sans-serif;font-size:9px;letter-spacing:.48em;text-transform:uppercase;color:#697969;font-weight:300}
-.names{position:absolute;top:33.5%;left:4%;width:92%;margin:0;font-family:'Bodoni Moda','Times New Roman',serif;font-size:clamp(48px,13.2vw,76px);line-height:.82;font-weight:400;letter-spacing:-.045em;text-transform:uppercase;color:#30412f;text-shadow:0 1px 0 rgba(255,255,255,.75)}
-.names .amp{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:.37em;line-height:.9;letter-spacing:0;margin:7px 0 5px;font-weight:500}
-.swirl{position:absolute;top:37.2%;left:50%;width:70%;height:90px;transform:translateX(-50%);z-index:-1;opacity:.42}.swirl:before,.swirl:after{content:'';position:absolute;top:45px;width:49%;height:50px;border-top:1px solid var(--line);border-radius:50%}.swirl:before{left:0;transform:rotate(-8deg)}.swirl:after{right:0;transform:rotate(8deg)}.swirl span{position:absolute;left:50%;top:24px;width:1px;height:72px;background:var(--line);transform:rotate(72deg)}
-.invite{position:absolute;top:50.8%;left:7%;width:86%;margin:0;font-size:clamp(20px,5.15vw,27px);line-height:1.02;color:#485648}.invite strong{display:block;font-weight:500;letter-spacing:.055em;text-transform:uppercase;font-size:.9em;margin-top:5px}
-.divider{position:absolute;top:61.5%;left:10%;width:80%;height:20px;display:flex;align-items:center;justify-content:center;gap:15px;color:#758270}.divider:before,.divider:after{content:'';height:1px;background:rgba(92,105,88,.48);flex:1}.divider span{font-family:Montserrat,Arial,sans-serif;font-size:9px;letter-spacing:.38em;text-transform:uppercase;margin-left:.38em}
-.date-line{position:absolute;top:64.8%;left:0;width:100%;font-family:'Bodoni Moda','Times New Roman',serif;font-size:clamp(19px,4.9vw,27px);letter-spacing:.14em;color:#3b4939;text-transform:uppercase;margin:0}.date-main{position:absolute;top:69%;left:0;width:100%;font-family:'Bodoni Moda','Times New Roman',serif;font-size:clamp(62px,15.5vw,88px);line-height:.86;letter-spacing:.015em;color:#334332;font-weight:400;margin:0}
-.time-row{position:absolute;top:77.5%;left:11%;width:78%;height:34px;display:flex;align-items:center;justify-content:center;gap:16px}.time-row:before,.time-row:after{content:'';height:1px;flex:1;background:rgba(92,105,88,.45)}.time{font-family:'Bodoni Moda','Times New Roman',serif;font-size:clamp(20px,5vw,25px);letter-spacing:.14em;color:#3e4c3c;margin-left:.14em;white-space:nowrap}
-.button{position:absolute;top:83.8%;left:50%;transform:translateX(-50%);min-width:190px;padding:14px 31px;border:1px solid rgba(75,89,73,.55);border-radius:0;background:rgba(250,248,241,.94);color:#435143;font-family:Montserrat,Arial,sans-serif;font-size:10px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;box-shadow:0 5px 18px rgba(58,70,55,.10);z-index:12}.button:active{transform:translateX(-50%) scale(.98)}.hint{position:absolute;top:90.8%;width:100%;font-family:Montserrat,Arial,sans-serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(72,85,69,.48);margin:0}
-.bot{position:absolute;z-index:4;width:135px;height:220px;bottom:-27px;opacity:.43;pointer-events:none}.bot.left{left:-30px}.bot.right{right:-30px;transform:scaleX(-1)}.bot svg{width:100%;height:100%}.bot path,.bot ellipse{fill:none;stroke:#879485;stroke-width:1}.bot .leaf{fill:#b5bdaf;fill-opacity:.14}
-.video-screen{display:none;position:fixed;inset:0;z-index:20;background:#111;align-items:center;justify-content:center}.video-screen.active{display:flex}video{width:100%;height:100%;object-fit:contain;background:#111}.back{position:absolute;z-index:22;top:max(18px,env(safe-area-inset-top));left:18px;border:1px solid rgba(255,255,255,.45);border-radius:50px;padding:9px 15px;color:#fff;background:rgba(0,0,0,.28);font:12px Arial,sans-serif}.open-pdf{position:absolute;z-index:30;left:50%;bottom:max(32px,calc(env(safe-area-inset-bottom) + 24px));transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:15px 43px;min-width:145px;border-radius:999px;border:1px solid rgba(83,105,86,.45);background:rgba(250,248,242,.97);color:#526653;text-decoration:none;text-align:center;font:500 15px Montserrat,Arial,sans-serif;letter-spacing:.16em;box-shadow:0 8px 30px rgba(0,0,0,.28);transition:opacity .5s,transform .5s}.open-pdf.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
-@media(max-height:760px){.photo{height:52%}.kicker{top:27.5%}.names{top:30.5%;font-size:clamp(44px,12.5vw,70px)}.invite{top:47.5%}.divider{top:58.5%}.date-line{top:61.8%}.date-main{top:66%}.time-row{top:74.2%}.button{top:80.3%}.hint{top:87.5%}.bot{height:195px;width:120px}}
+:root{--paper:#f3f0e8;--ink:#314a35;--soft:#647463;--line:#aab5a6}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--paper)}body{overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif}
+.page{position:relative;width:100%;max-width:560px;height:100dvh;min-height:680px;margin:auto;overflow:hidden;background:var(--paper)}
+/* Foto: faixa superior com dissolução para o papel, como no modelo. */
+.photo{position:absolute;z-index:0;left:0;top:0;width:100%;height:47%;object-fit:cover;object-position:center 25%;filter:saturate(.82) contrast(.95) brightness(1.04)}
+.photoFade{position:absolute;z-index:1;left:0;right:0;top:0;height:59%;background:linear-gradient(to bottom,rgba(243,240,232,0) 0%,rgba(243,240,232,0) 40%,rgba(243,240,232,.12) 48%,rgba(243,240,232,.55) 63%,rgba(243,240,232,.92) 78%,var(--paper) 100%)}
+.paperPanel{position:absolute;z-index:2;left:6.5%;right:6.5%;top:7.5%;bottom:4.5%;background:rgba(250,249,244,.18);border:1px solid rgba(80,99,82,.28);pointer-events:none}
+.paperPanel:after{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.52)}
+.orn{position:absolute;z-index:3;pointer-events:none}.orn.top{top:-8px;right:-26px;width:43%;opacity:.82}.orn.bottom{bottom:-24px;left:-24px;width:42%;opacity:.72}.orn.side{bottom:1.5%;right:-28px;width:35%;opacity:.88}
+.content{position:absolute;z-index:5;inset:0;text-align:center;padding:0 9%}
+.kicker{margin:0;position:absolute;top:27.5%;left:0;width:100%;font:400 9px/1 'Montserrat',Arial,sans-serif;letter-spacing:.42em;text-transform:uppercase;color:#718071}
+.names{position:absolute;top:30.4%;left:0;width:100%;margin:0;color:#2f4934;font-family:'Playfair Display',Georgia,serif;font-size:clamp(42px,11.7vw,66px);font-weight:400;line-height:1.02;letter-spacing:.035em;text-transform:none}
+.names .first,.names .second{display:block;white-space:nowrap}.names .amp{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;line-height:1;margin:4px 0 3px;letter-spacing:0}
+.names:after{content:"";display:block;width:72px;height:1px;background:#a8b1a4;margin:12px auto 0}
+.invite{position:absolute;top:48.8%;left:5%;width:90%;margin:0;color:#536454;font-size:clamp(21px,5.2vw,27px);line-height:1.08;font-weight:400}
+.invite strong{display:block;font-weight:600;letter-spacing:.10em;text-transform:uppercase;font-size:.82em;margin-top:5px}
+.dateBlock{position:absolute;top:59.8%;left:0;width:100%;color:#415641}
+.dateWeek{display:flex;align-items:center;gap:14px;width:84%;margin:0 auto 10px;font:400 10px/1 'Montserrat',Arial,sans-serif;letter-spacing:.36em;text-transform:uppercase}.dateWeek:before,.dateWeek:after{content:"";height:1px;background:rgba(84,105,87,.45);flex:1}.dateWeek span{white-space:nowrap;margin-left:.36em}
+.date{font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,5.7vw,31px);letter-spacing:.14em;text-transform:uppercase;line-height:1.05}
+.year{margin-top:5px;font-family:'Playfair Display',Georgia,serif;font-size:clamp(56px,14vw,78px);line-height:.92;letter-spacing:.025em}
+.time{margin-top:9px;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,5.5vw,30px);letter-spacing:.16em}.time:before{content:"";display:inline-block;width:52px;height:1px;background:rgba(84,105,87,.45);vertical-align:middle;margin-right:14px}.time:after{content:"";display:inline-block;width:52px;height:1px;background:rgba(84,105,87,.45);vertical-align:middle;margin-left:14px}
+.button{position:absolute;top:83.6%;left:50%;transform:translateX(-50%);width:188px;padding:14px 18px;background:rgba(248,246,239,.96);border:1px solid rgba(69,91,72,.55);color:#405541;font:400 10px/1 'Montserrat',Arial,sans-serif;letter-spacing:.30em;text-transform:uppercase;cursor:pointer;box-shadow:0 5px 18px rgba(42,62,45,.08);z-index:8}.button:active{transform:translateX(-50%) scale(.98)}
+.hint{position:absolute;top:90.8%;left:0;width:100%;margin:0;color:rgba(71,88,73,.55);font:300 7px/1 'Montserrat',Arial,sans-serif;letter-spacing:.20em;text-transform:uppercase}
+.video-screen{display:none;position:fixed;inset:0;z-index:50;background:#111;align-items:center;justify-content:center}.video-screen.active{display:flex}video{width:100%;height:100%;object-fit:contain;background:#111}.back{position:absolute;z-index:52;top:max(18px,env(safe-area-inset-top));left:18px;border:1px solid rgba(255,255,255,.45);border-radius:50px;padding:9px 15px;color:#fff;background:rgba(0,0,0,.3);font:12px Arial,sans-serif}.open-pdf{position:absolute;z-index:55;left:50%;bottom:max(32px,calc(env(safe-area-inset-bottom) + 24px));transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:15px 43px;min-width:145px;border-radius:999px;border:1px solid rgba(83,105,86,.45);background:rgba(250,248,242,.97);color:#526653;text-decoration:none;text-align:center;font:500 15px Montserrat,Arial,sans-serif;letter-spacing:.16em;box-shadow:0 8px 30px rgba(0,0,0,.28);transition:opacity .35s,transform .35s}.open-pdf.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+@media(max-height:760px){.kicker{top:25.2%}.names{top:28.2%;font-size:clamp(39px,11.3vw,62px)}.invite{top:46.2%;font-size:clamp(20px,5vw,25px)}.dateBlock{top:58%}.button{top:82.2%}.hint{top:90.2%}}
 </style>
 </head>
 <body>
 <section class="page" id="home">
-<img class="photo" src="foto-casal.jpg" alt="Gisele e Anderson">
-<div class="photoMix"></div><div class="photoGlow"></div><div class="frame"></div>
-<div class="bot left"><svg viewBox="0 0 150 245" aria-hidden="true"><path d="M82 245C64 202 70 157 56 116 47 85 32 54 20 14"/><ellipse class="leaf" cx="30" cy="39" rx="23" ry="7" transform="rotate(42 30 39)"/><ellipse class="leaf" cx="55" cy="78" rx="24" ry="8" transform="rotate(-34 55 78)"/><ellipse class="leaf" cx="48" cy="112" rx="23" ry="7" transform="rotate(34 48 112)"/><ellipse class="leaf" cx="64" cy="150" rx="24" ry="8" transform="rotate(-32 64 150)"/><ellipse class="leaf" cx="61" cy="186" rx="23" ry="7" transform="rotate(34 61 186)"/></svg></div>
-<div class="bot right"><svg viewBox="0 0 150 245" aria-hidden="true"><path d="M82 245C64 202 70 157 56 116 47 85 32 54 20 14"/><ellipse class="leaf" cx="30" cy="39" rx="23" ry="7" transform="rotate(42 30 39)"/><ellipse class="leaf" cx="55" cy="78" rx="24" ry="8" transform="rotate(-34 55 78)"/><ellipse class="leaf" cx="48" cy="112" rx="23" ry="7" transform="rotate(34 48 112)"/><ellipse class="leaf" cx="64" cy="150" rx="24" ry="8" transform="rotate(-32 64 150)"/><ellipse class="leaf" cx="61" cy="186" rx="23" ry="7" transform="rotate(34 61 186)"/></svg></div>
+<img class="photo" src="foto-casal.jpg" alt="">
+<div class="photoFade"></div><div class="paperPanel"></div>
+<img class="orn top" src="top_right.png" alt=""><img class="orn bottom" src="bottom_left.png" alt=""><img class="orn side" src="right_sprig.png" alt="">
 <main class="content">
 <p class="kicker">Nosso casamento</p>
-<h1 class="names">Gisele <span class="amp">&amp;</span> Anderson</h1><div class="swirl"><span></span></div>
+<h1 class="names"><span class="first">Anderson</span><span class="amp">&amp;</span><span class="second">Gisele</span></h1>
 <p class="invite">convidam para a celebração do seu<strong>casamento e festa comemorativa</strong></p>
-<div class="divider"><span>Sábado</span></div>
-<p class="date-line">05 de dezembro</p><p class="date-main">2026</p>
-<div class="time-row"><span class="time">19:00</span></div>
+<div class="dateBlock"><div class="dateWeek"><span>Sábado</span></div><div class="date">05 de dezembro</div><div class="year">2026</div><div class="time">19:00</div></div>
 <button class="button" id="start">Toque aqui</button><p class="hint">Toque para assistir ao convite</p>
-</main></section>
+</main>
+</section>
 <section class="video-screen" id="videoScreen"><button class="back" id="back">Voltar</button><video id="video" playsinline controls preload="metadata"><source src="convite.mp4" type="video/mp4"></video><a class="open-pdf" id="pdfButton" href="convite.pdf" target="_blank" rel="noopener">Abrir</a></section>
-<script>const start=document.getElementById('start'),home=document.getElementById('home'),screen=document.getElementById('videoScreen'),video=document.getElementById('video'),pdfButton=document.getElementById('pdfButton'),back=document.getElementById('back');function showOpen(){pdfButton.classList.add('show')}start.addEventListener('click',()=>{home.style.display='none';screen.classList.add('active');pdfButton.classList.remove('show');video.pause();video.currentTime=0;video.load();const p=video.play();if(p)p.catch(()=>{})});video.addEventListener('ended',showOpen);video.addEventListener('timeupdate',()=>{if(Number.isFinite(video.duration)&&video.duration>0&&video.currentTime>=video.duration-.2)showOpen()});back.addEventListener('click',()=>{video.pause();screen.classList.remove('active');home.style.display='block';pdfButton.classList.remove('show')});</script>
+<script>
+const start=document.getElementById('start'),home=document.getElementById('home'),screen=document.getElementById('videoScreen'),video=document.getElementById('video'),pdfButton=document.getElementById('pdfButton'),back=document.getElementById('back');
+function showOpen(){pdfButton.classList.add('show')}
+start.addEventListener('click',()=>{home.style.display='none';screen.classList.add('active');pdfButton.classList.remove('show');video.pause();video.currentTime=0;video.load();const p=video.play();if(p)p.catch(()=>{})});
+video.addEventListener('ended',showOpen);video.addEventListener('timeupdate',()=>{if(Number.isFinite(video.duration)&&video.duration>0&&video.currentTime>=video.duration-.2)showOpen()});
+back.addEventListener('click',()=>{video.pause();screen.classList.remove('active');home.style.display='block';pdfButton.classList.remove('show')});
+</script>
 </body></html>

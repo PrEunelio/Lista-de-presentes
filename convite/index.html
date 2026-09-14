@@ -3,301 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f5f2eb">
+<meta name="theme-color" content="#f5f1e8">
 <title>Gisele & Anderson — Convite</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
-
-  * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    min-height: 100%;
-    background: #f5f2eb;
-  }
-
-  body {
-    color: #566a59;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-  }
-
-  .page {
-    position: relative;
-    width: min(100%, 520px);
-    min-height: 100vh;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 12% 15%, rgba(119,145,121,.09), transparent 27%),
-      radial-gradient(circle at 88% 82%, rgba(119,145,121,.08), transparent 29%),
-      #f5f2eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 42px 25px;
-  }
-
-  /* Folhagens decorativas sutis */
-  .leaf {
-    position: absolute;
-    opacity: .18;
-    pointer-events: none;
-  }
-
-  .leaf.left {
-    left: -42px;
-    top: 7%;
-    width: 170px;
-    height: 330px;
-    border-right: 2px solid #718a75;
-    border-radius: 0 100% 0 0;
-    transform: rotate(-17deg);
-  }
-
-  .leaf.right {
-    right: -48px;
-    bottom: 4%;
-    width: 175px;
-    height: 330px;
-    border-left: 2px solid #718a75;
-    border-radius: 100% 0 0 0;
-    transform: rotate(18deg);
-  }
-
-  .leaf::before,
-  .leaf::after {
-    content: "";
-    position: absolute;
-    width: 72px;
-    height: 28px;
-    border: 1.5px solid #718a75;
-    border-left: 0;
-    border-bottom: 0;
-    border-radius: 100% 0;
-  }
-
-  .leaf::before { top: 55px; right: 18px; transform: rotate(20deg); }
-  .leaf::after { top: 125px; right: 7px; transform: rotate(-8deg); }
-
-  .card {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    text-align: center;
-    padding: 30px 16px;
-  }
-
-  .names {
-    font-size: clamp(48px, 14vw, 72px);
-    line-height: .92;
-    font-weight: 500;
-    letter-spacing: .015em;
-    color: #536956;
-    margin: 0;
-  }
-
-  .amp {
-    font-size: .52em;
-    font-weight: 400;
-    margin: 0 .08em;
-  }
-
-  .rule {
-    width: 58px;
-    height: 1px;
-    background: rgba(83,105,86,.45);
-    margin: 25px auto 22px;
-  }
-
-  .invite {
-    font-size: clamp(23px, 6vw, 30px);
-    line-height: 1.08;
-    margin: 0 auto;
-    max-width: 410px;
-  }
-
-  .small {
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 11px;
-    line-height: 1.8;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: #718174;
-    margin-top: 24px;
-  }
-
-  .date {
-    margin-top: 16px;
-    font-size: clamp(25px, 6.5vw, 32px);
-    letter-spacing: .06em;
-  }
-
-  .button {
-    display: inline-block;
-    margin-top: 38px;
-    padding: 14px 47px;
-    border: 1px solid rgba(83,105,86,.48);
-    border-radius: 999px;
-    background: rgba(255,255,255,.48);
-    color: #526653;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: 0 7px 24px rgba(72,88,74,.10);
-    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
-  }
-
-  .button:hover, .button:focus {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,.82);
-    box-shadow: 0 10px 28px rgba(72,88,74,.17);
-    outline: none;
-  }
-
-  .hint {
-    margin-top: 18px;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: .11em;
-    color: rgba(83,105,86,.62);
-  }
-
-  .video-screen {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    background: #111;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .video-screen.active { display: flex; }
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
-  .back {
-    position: absolute;
-    z-index: 12;
-    top: max(18px, env(safe-area-inset-top));
-    left: 18px;
-    border: 1px solid rgba(255,255,255,.45);
-    border-radius: 50px;
-    padding: 9px 15px;
-    color: white;
-    background: rgba(0,0,0,.28);
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  .open-pdf {
-    position: absolute;
-    z-index: 13;
-    left: 50%;
-    bottom: max(32px, calc(env(safe-area-inset-bottom) + 24px));
-    transform: translate(-50%, 18px);
-    opacity: 0;
-    pointer-events: none;
-    padding: 15px 43px;
-    min-width: 145px;
-    border-radius: 999px;
-    border: 1px solid rgba(83,105,86,.45);
-    background: rgba(250,248,242,.95);
-    color: #526653;
-    text-decoration: none;
-    text-align: center;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    box-shadow: 0 8px 30px rgba(0,0,0,.28);
-    transition: opacity .7s ease, transform .7s ease;
-    animation: pulse 2.2s ease-in-out infinite;
-  }
-
-  .open-pdf.show {
-    opacity: 1;
-    transform: translate(-50%, 0);
-    pointer-events: auto;
-  }
-
-  @keyframes pulse {
-    0%,100% { box-shadow: 0 8px 30px rgba(0,0,0,.28); }
-    50% { box-shadow: 0 11px 38px rgba(0,0,0,.40); }
-  }
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#f5f1e8}
+body{font-family:"Cormorant Garamond",Georgia,serif;color:#3f4d3f;overflow:hidden}
+.page{position:relative;width:min(100vw,560px);height:100dvh;min-height:680px;margin:auto;overflow:hidden;background:#f5f1e8;display:flex;align-items:flex-end;justify-content:center}
+/* A foto do casal ocupa o alto da capa e se dissolve suavemente no papel, como no modelo enviado. */
+.photo-watermark{position:absolute;z-index:0;left:0;top:0;width:100%;height:67%;object-fit:cover;object-position:center 28%;filter:saturate(.86) contrast(.94) brightness(1.04);transform:scale(1.015)}
+.photo-fade{position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(247,244,235,0) 25%,rgba(247,244,235,.04) 37%,rgba(247,244,235,.38) 50%,rgba(247,244,235,.86) 61%,#f5f1e8 72%)}
+.photo-soften{position:absolute;z-index:1;left:0;top:0;width:100%;height:58%;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.08));mix-blend-mode:screen;pointer-events:none}
+/* moldura delicada */
+.frame{position:absolute;inset:13px;z-index:7;border:1px solid rgba(91,108,88,.28);pointer-events:none}
+.frame:after{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.62)}
+/* ramos lineares discretos */
+.botanical{position:absolute;z-index:3;width:150px;height:260px;opacity:.62;pointer-events:none}
+.botanical.left{left:-31px;bottom:-28px;transform:rotate(-13deg)}
+.botanical.right{right:-31px;bottom:-28px;transform:scaleX(-1) rotate(-13deg)}
+.botanical .stem{position:absolute;left:74px;top:18px;width:1px;height:235px;background:rgba(91,108,88,.58);transform:rotate(-12deg);transform-origin:bottom}
+.botanical i{position:absolute;width:45px;height:19px;border:1px solid rgba(91,108,88,.58);border-radius:100% 0 100% 0}
+.botanical .a{left:35px;top:53px;transform:rotate(18deg)}
+.botanical .b{left:72px;top:82px;transform:rotate(-29deg)}
+.botanical .c{left:28px;top:115px;transform:rotate(21deg)}
+.botanical .d{left:68px;top:150px;transform:rotate(-31deg)}
+.botanical .e{left:18px;top:182px;transform:rotate(18deg)}
+.botanical .f{left:58px;top:207px;transform:rotate(-30deg)}
+/* conteúdo principal, inspirado diretamente na composição do modelo */
+.content{position:relative;z-index:5;width:100%;text-align:center;padding:0 35px 34px;display:flex;flex-direction:column;align-items:center}
+.kicker{font-family:Montserrat,Arial,sans-serif;font-size:9px;letter-spacing:.38em;text-transform:uppercase;color:#71806f;margin:0 0 12px}
+.names{font-family:"Bodoni Moda","Times New Roman",serif;font-size:clamp(61px,15.7vw,88px);line-height:.78;font-weight:400;letter-spacing:-.045em;color:#374335;margin:0;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,255,255,.65)}
+.amp{display:block;font-size:.39em;line-height:1.15;letter-spacing:0;margin:4px 0 1px;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500}
+.swirl{width:245px;height:30px;margin:-3px auto 4px;position:relative;opacity:.72}
+.swirl:before,.swirl:after{content:"";position:absolute;top:14px;width:112px;height:20px;border-top:1px solid #899383;border-radius:50%}
+.swirl:before{left:2px;transform:rotate(-7deg)}
+.swirl:after{right:2px;transform:rotate(7deg)}
+.swirl span{position:absolute;left:50%;top:2px;width:1px;height:27px;background:#899383;transform:rotate(72deg);transform-origin:center}
+.invite{font-size:clamp(21px,5.6vw,27px);line-height:1.02;color:#4d594b;margin:8px 0 0;max-width:430px}
+.invite strong{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.92em}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;margin:22px 0 8px;color:#7c8977}
+.divider:before,.divider:after{content:"";height:1px;background:rgba(91,108,88,.45);flex:1;max-width:110px}
+.divider span{font-family:Montserrat,Arial,sans-serif;font-size:10px;letter-spacing:.36em;text-transform:uppercase;margin-left:.36em}
+.date-line{font-family:"Bodoni Moda","Times New Roman",serif;font-size:clamp(20px,5.4vw,28px);letter-spacing:.14em;color:#3e493d;text-transform:uppercase;margin:0}
+.date-main{font-family:"Bodoni Moda","Times New Roman",serif;font-size:clamp(53px,13vw,70px);line-height:.92;letter-spacing:.02em;color:#354133;margin:4px 0 0}
+.date-main .day{font-size:1.03em}
+.time-row{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:10px;width:100%}
+.time-row:before,.time-row:after{content:"";height:1px;width:72px;background:rgba(91,108,88,.45)}
+.time{font-family:"Bodoni Moda","Times New Roman",serif;font-size:22px;letter-spacing:.16em;color:#465244;margin-left:.16em}
+.button{margin-top:18px;padding:13px 38px;border:1px solid rgba(73,88,72,.55);border-radius:0;background:rgba(250,248,241,.88);color:#435041;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;cursor:pointer;box-shadow:0 9px 25px rgba(60,72,57,.13);transition:.25s;position:relative;z-index:8}
+.button:active{transform:scale(.98)}
+.hint{font-family:Montserrat,Arial,sans-serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(72,87,71,.55);margin-top:8px}
+.video-screen{display:none;position:fixed;inset:0;z-index:20;background:#111;align-items:center;justify-content:center}
+.video-screen.active{display:flex}
+video{width:100%;height:100%;object-fit:contain;display:block;background:#111}
+.back{position:absolute;z-index:22;top:max(18px,env(safe-area-inset-top));left:18px;border:1px solid rgba(255,255,255,.45);border-radius:50px;padding:9px 15px;color:white;background:rgba(0,0,0,.28);font-family:Arial,sans-serif;font-size:12px;cursor:pointer}
+.open-pdf{position:absolute;z-index:30;left:50%;bottom:max(32px,calc(env(safe-area-inset-bottom) + 24px));transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:15px 43px;min-width:145px;border-radius:999px;border:1px solid rgba(83,105,86,.45);background:rgba(250,248,242,.97);color:#526653;text-decoration:none;text-align:center;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 8px 30px rgba(0,0,0,.28);transition:opacity .5s ease,transform .5s ease;animation:pulse 2.2s ease-in-out infinite}
+.open-pdf.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.28)}50%{box-shadow:0 11px 38px rgba(0,0,0,.40)}}
+@media(max-height:760px){.content{padding-bottom:22px}.invite{margin-top:4px}.divider{margin-top:13px}.button{margin-top:12px}.photo-watermark{height:64%}}
 </style>
 </head>
 <body>
-
 <section class="page" id="home">
-  <div class="leaf left"></div>
-  <div class="leaf right"></div>
-
-  <div class="card">
+  <img class="photo-watermark" src="foto-casal.jpg" alt="" aria-hidden="true">
+  <div class="photo-soften" aria-hidden="true"></div>
+  <div class="photo-fade" aria-hidden="true"></div>
+  <div class="botanical left" aria-hidden="true"><span class="stem"></span><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><i class="e"></i><i class="f"></i></div>
+  <div class="botanical right" aria-hidden="true"><span class="stem"></span><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><i class="e"></i><i class="f"></i></div>
+  <div class="frame" aria-hidden="true"></div>
+  <main class="content">
+    <p class="kicker">Nosso casamento</p>
     <h1 class="names">Gisele <span class="amp">&amp;</span> Anderson</h1>
-    <div class="rule"></div>
-    <p class="invite">convidam para a celebração do seu<br>casamento e festa comemorativa</p>
-
-    <div class="small">Sábado</div>
-    <div class="date">05/12/2026 · 19:00</div>
-
+    <div class="swirl" aria-hidden="true"><span></span></div>
+    <p class="invite">convidam para a celebração do seu<br><strong>casamento e festa comemorativa</strong></p>
+    <div class="divider"><span>Sábado</span></div>
+    <p class="date-line">05 de dezembro</p>
+    <p class="date-main"><span class="day">2026</span></p>
+    <div class="time-row"><span class="time">19:00</span></div>
     <button class="button" id="start">Toque aqui</button>
     <div class="hint">Toque para assistir ao convite</div>
-  </div>
+  </main>
 </section>
-
 <section class="video-screen" id="videoScreen">
   <button class="back" id="back">Voltar</button>
-  <video id="video" playsinline controls preload="auto">
-    <source src="convite.mp4" type="video/mp4">
-  </video>
+  <video id="video" playsinline controls preload="metadata"><source src="convite.mp4" type="video/mp4"></video>
   <a class="open-pdf" id="pdfButton" href="convite.pdf" target="_blank" rel="noopener">Abrir</a>
 </section>
-
 <script>
-  const start = document.getElementById("start");
-  const home = document.getElementById("home");
-  const screen = document.getElementById("videoScreen");
-  const video = document.getElementById("video");
-  const pdfButton = document.getElementById("pdfButton");
-  const back = document.getElementById("back");
-
-  start.addEventListener("click", async () => {
-    home.style.display = "none";
-    screen.classList.add("active");
-    pdfButton.classList.remove("show");
-    video.currentTime = 0;
-    try {
-      await video.play();
-    } catch (e) {
-      // Se o navegador bloquear o autoplay, os controles continuam disponíveis.
-    }
-  });
-
-  video.addEventListener("ended", () => {
-    pdfButton.classList.add("show");
-  });
-
-  back.addEventListener("click", () => {
-    video.pause();
-    screen.classList.remove("active");
-    home.style.display = "flex";
-    pdfButton.classList.remove("show");
-  });
+const start=document.getElementById('start'),home=document.getElementById('home'),screen=document.getElementById('videoScreen'),video=document.getElementById('video'),pdfButton=document.getElementById('pdfButton'),back=document.getElementById('back');
+function showOpen(){pdfButton.classList.add('show')}
+start.addEventListener('click',()=>{home.style.display='none';screen.classList.add('active');pdfButton.classList.remove('show');video.pause();video.currentTime=0;video.load();const p=video.play();if(p) p.catch(()=>{});});
+video.addEventListener('ended',showOpen);
+video.addEventListener('timeupdate',()=>{if(Number.isFinite(video.duration)&&video.duration>0&&video.currentTime>=video.duration-0.20)showOpen()});
+back.addEventListener('click',()=>{video.pause();screen.classList.remove('active');home.style.display='flex';pdfButton.classList.remove('show')});
 </script>
 </body>
 </html>

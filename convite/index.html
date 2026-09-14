@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f5f2eb">
+<title>Gisele & Anderson — Convite</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
 
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    background: #f5f2eb;
+  }
+
+  body {
+    color: #566a59;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .page {
+    position: relative;
+    width: min(100%, 520px);
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(119,145,121,.09), transparent 27%),
+      radial-gradient(circle at 88% 82%, rgba(119,145,121,.08), transparent 29%),
+      #f5f2eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 42px 25px;
+  }
+
+  /* Folhagens decorativas sutis */
+  .leaf {
+    position: absolute;
+    opacity: .18;
+    pointer-events: none;
+  }
+
+  .leaf.left {
+    left: -42px;
+    top: 7%;
+    width: 170px;
+    height: 330px;
+    border-right: 2px solid #718a75;
+    border-radius: 0 100% 0 0;
+    transform: rotate(-17deg);
+  }
+
+  .leaf.right {
+    right: -48px;
+    bottom: 4%;
+    width: 175px;
+    height: 330px;
+    border-left: 2px solid #718a75;
+    border-radius: 100% 0 0 0;
+    transform: rotate(18deg);
+  }
+
+  .leaf::before,
+  .leaf::after {
+    content: "";
+    position: absolute;
+    width: 72px;
+    height: 28px;
+    border: 1.5px solid #718a75;
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 100% 0;
+  }
+
+  .leaf::before { top: 55px; right: 18px; transform: rotate(20deg); }
+  .leaf::after { top: 125px; right: 7px; transform: rotate(-8deg); }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    padding: 30px 16px;
+  }
+
+  .names {
+    font-size: clamp(48px, 14vw, 72px);
+    line-height: .92;
+    font-weight: 500;
+    letter-spacing: .015em;
+    color: #536956;
+    margin: 0;
+  }
+
+  .amp {
+    font-size: .52em;
+    font-weight: 400;
+    margin: 0 .08em;
+  }
+
+  .rule {
+    width: 58px;
+    height: 1px;
+    background: rgba(83,105,86,.45);
+    margin: 25px auto 22px;
+  }
+
+  .invite {
+    font-size: clamp(23px, 6vw, 30px);
+    line-height: 1.08;
+    margin: 0 auto;
+    max-width: 410px;
+  }
+
+  .small {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.8;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #718174;
+    margin-top: 24px;
+  }
+
+  .date {
+    margin-top: 16px;
+    font-size: clamp(25px, 6.5vw, 32px);
+    letter-spacing: .06em;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 38px;
+    padding: 14px 47px;
+    border: 1px solid rgba(83,105,86,.48);
+    border-radius: 999px;
+    background: rgba(255,255,255,.48);
+    color: #526653;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 7px 24px rgba(72,88,74,.10);
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+
+  .button:hover, .button:focus {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.82);
+    box-shadow: 0 10px 28px rgba(72,88,74,.17);
+    outline: none;
+  }
+
+  .hint {
+    margin-top: 18px;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: .11em;
+    color: rgba(83,105,86,.62);
+  }
+
+  .video-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: #111;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-screen.active { display: flex; }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .back {
+    position: absolute;
+    z-index: 12;
+    top: max(18px, env(safe-area-inset-top));
+    left: 18px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 50px;
+    padding: 9px 15px;
+    color: white;
+    background: rgba(0,0,0,.28);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .open-pdf {
+    position: absolute;
+    z-index: 13;
+    left: 50%;
+    bottom: max(32px, calc(env(safe-area-inset-bottom) + 24px));
+    transform: translate(-50%, 18px);
+    opacity: 0;
+    pointer-events: none;
+    padding: 15px 43px;
+    min-width: 145px;
+    border-radius: 999px;
+    border: 1px solid rgba(83,105,86,.45);
+    background: rgba(250,248,242,.95);
+    color: #526653;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(0,0,0,.28);
+    transition: opacity .7s ease, transform .7s ease;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+
+  .open-pdf.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 8px 30px rgba(0,0,0,.28); }
+    50% { box-shadow: 0 11px 38px rgba(0,0,0,.40); }
+  }
+</style>
+</head>
+<body>
+
+<section class="page" id="home">
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
+
+  <div class="card">
+    <h1 class="names">Gisele <span class="amp">&amp;</span> Anderson</h1>
+    <div class="rule"></div>
+    <p class="invite">convidam para a celebração do seu<br>casamento e festa comemorativa</p>
+
+    <div class="small">Sábado</div>
+    <div class="date">05/12/2026 · 19:30</div>
+
+    <button class="button" id="start">Toque aqui</button>
+    <div class="hint">Toque para assistir ao convite</div>
+  </div>
+</section>
+
+<section class="video-screen" id="videoScreen">
+  <button class="back" id="back">Voltar</button>
+  <video id="video" playsinline controls preload="auto">
+    <source src="convite.mp4" type="video/mp4">
+  </video>
+  <a class="open-pdf" id="pdfButton" href="convite.pdf" target="_blank" rel="noopener">Abrir</a>
+</section>
+
+<script>
+  const start = document.getElementById("start");
+  const home = document.getElementById("home");
+  const screen = document.getElementById("videoScreen");
+  const video = document.getElementById("video");
+  const pdfButton = document.getElementById("pdfButton");
+  const back = document.getElementById("back");
+
+  start.addEventListener("click", async () => {
+    home.style.display = "none";
+    screen.classList.add("active");
+    pdfButton.classList.remove("show");
+    video.currentTime = 0;
+    try {
+      await video.play();
+    } catch (e) {
+      // Se o navegador bloquear o autoplay, os controles continuam disponíveis.
+    }
+  });
+
+  video.addEventListener("ended", () => {
+    pdfButton.classList.add("show");
+  });
+
+  back.addEventListener("click", () => {
+    video.pause();
+    screen.classList.remove("active");
+    home.style.display = "flex";
+    pdfButton.classList.remove("show");
+  });
+</script>
+</body>
+</html>

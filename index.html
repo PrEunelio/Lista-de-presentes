@@ -2,7 +2,8 @@
 (function(){
   try {
     var key="convite_inicial_exibido";
-    if(!sessionStorage.getItem(key)){
+    var params=new URLSearchParams(window.location.search);
+    if(params.get("lista")!=="1" && !sessionStorage.getItem(key)){
       sessionStorage.setItem(key,"1");
       window.location.replace("convite/");
     }
